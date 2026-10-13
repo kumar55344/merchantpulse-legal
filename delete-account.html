@@ -39,9 +39,11 @@ footer{padding:20px;color:#667085}
 <p>An email request does not itself delete an account. It must be received, verified and processed.</p>
 </section>
 <section>
-<h2>Data that remains on your device</h2>
-<p>The current app implementation intentionally retains locally stored transaction records, QR profile records and QR image files when the cloud account is deleted. Deleting the account does not automatically erase these local records.</p>
-<p>Review and manage local records on your device separately. Clearing app data or uninstalling the app may remove locally stored records.</p>
+<h2>Local data and device records</h2>
+<p>When you delete your account using the in-app Delete Account feature, the app's multi-step deletion coordinator permanently removes all local SQLite transaction records, saved QR profiles, and account-owned QR image files associated with that account from your device.</p>
+<p>Older unassigned legacy records and records belonging to other accounts are protected and are not deleted by this operation.</p>
+<p>Existing encrypted backup files stored in your personal Google Drive account are NOT automatically deleted by this flow. They remain in your private Google Drive Application Data folder until you choose to delete them directly through Google Drive settings.</p>
+<p>If an account deletion step encounters a network error or interruption midway, the app retains a local recovery journal so the operation can be resumed or retried safely on the next launch rather than leaving partial data in an inconsistent state.</p>
 </section>
 <section>
 <h2>Processing and support</h2>

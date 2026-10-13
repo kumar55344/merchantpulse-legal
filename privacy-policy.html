@@ -65,9 +65,10 @@ footer{padding:20px;color:#667085}
 <section>
 <h2>6. Retention and account deletion</h2>
 <p>You can request deletion of your MerchantPulse account using the in-app Delete Account feature or the external account deletion page.</p>
-<p>Account deletion removes the associated Firebase Authentication account and merchant profile document when the operation succeeds. Local transaction records, QR profile records and QR image files are intentionally retained on the device by the current implementation. They are not automatically deleted when the cloud account is deleted.</p>
-<p>Deleting your cloud account also does not automatically delete encrypted backup files already stored in your Google Drive Application Data folder. You can manage or delete hidden app data at any time through Google Drive on the web (Settings &rarr; Manage Apps &rarr; MerchantPulse &rarr; Options &rarr; Delete hidden app data).</p>
-<p>Review and manage locally stored records before sharing your device or removing the app. Local data may be lost when app data is cleared or the app is uninstalled.</p>
+<p>When an in-app account deletion completes, the operation permanently deletes your associated Firebase Authentication account and your merchant business profile document in Cloud Firestore. In addition, all local SQLite transaction records, saved QR profile records, and account-owned QR image files associated with that account are permanently purged from your device. Older unassigned legacy records and records belonging to other accounts are protected and are not deleted.</p>
+<p>Account deletion is coordinated across multiple steps. If an external service or network interruption prevents immediate completion, the app uses a durable local recovery journal to retry and finish remaining cleanup safely upon the next launch.</p>
+<p>Deleting your account does NOT automatically delete encrypted backup files already stored in your personal Google Drive account. Those backups remain in your private Google Drive Application Data folder until you choose to delete them directly through Google Drive on the web (Settings &rarr; Manage Apps &rarr; MerchantPulse &rarr; Options &rarr; Delete hidden app data).</p>
+<p>Review and export any records you wish to keep before initiating account deletion. This operation cannot be undone.</p>
 </section>
 <section>
 <h2>7. Security</h2>
