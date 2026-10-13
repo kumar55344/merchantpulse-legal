@@ -23,7 +23,7 @@ footer{padding:20px;color:#667085}
 <h2>1. Introduction</h2>
 <p>MerchantPulse is a merchant utility app designed to help users review supported UPI payment notifications, maintain transaction records on their device, manage QR profiles and view estimated MDR information.</p>
 <p>This policy explains how the app handles information. Please review it before using the app.</p>
-<p><strong>Last updated:</strong> 12 October 2026</p>
+<p><strong>Last updated:</strong> 13 October 2026</p>
 </section>
 <section>
 <h2>2. Information handled</h2>
@@ -34,6 +34,7 @@ footer{padding:20px;color:#667085}
 <li><strong>Payment notification information:</strong> Supported notification text, sender or payer description, amount and timestamp, when available and successfully parsed.</li>
 <li><strong>Transaction records:</strong> Records created from supported notifications and stored in the app's local database.</li>
 <li><strong>QR profiles:</strong> QR images and associated profile details that you choose to add.</li>
+<li><strong>Encrypted backup files:</strong> Optional, user-initiated encrypted backup containers containing transaction records, QR profile metadata, and QR images stored in your personal Google Drive account.</li>
 </ul>
 <p>The exact information available depends on your device, notification content and the features you use.</p>
 </section>
@@ -44,10 +45,17 @@ footer{padding:20px;color:#667085}
 <p>Parsing may be incomplete or inaccurate. Always verify important financial information against your payment provider or bank.</p>
 </section>
 <section>
-<h2>4. Local storage and cloud services</h2>
-<p>Transaction records and QR profiles are stored locally on your device. Account-scoped records are separated by the signed-in user's identifier. Older records that have not been assigned to an account may remain on the device as unassigned records.</p>
+<h2>4. Local storage and Google Drive cloud backup</h2>
+<p>Transaction records and QR profiles are stored locally on your device in an internal SQLite database and user-scoped folders. Account-scoped records are separated by the signed-in user's identifier. Older records that have not been assigned to an account may remain on the device as unassigned records.</p>
 <p>Merchant profile information is stored in Firebase services used by the app. Firebase Authentication is used for sign-in, and Cloud Firestore stores merchant profile data.</p>
-<p>This app's current implementation does not provide cloud backup or synchronization of its local transaction database and QR image files. Do not assume that local records can be recovered after uninstalling the app or losing the device.</p>
+<p>MerchantPulse allows you to optionally create encrypted backups and store them in your personal Google Drive account:</p>
+<ul>
+<li><strong>Storage scope:</strong> Backups are stored strictly in your private Google Drive Application Data folder (<code>drive.appdata</code>). The app cannot view, modify, or delete any of your other Google Drive files or folders.</li>
+<li><strong>Client-side encryption:</strong> Backup data—including transaction records (notification key, amount, sender, timestamp), QR profile details, and QR image files—is encrypted locally on your device using standard AES-GCM (256-bit) encryption with PBKDF2 and HKDF key derivation before anything is transmitted over the network.</li>
+<li><strong>Passwords &amp; recovery codes:</strong> Backups are protected by a user-chosen backup password or an auto-generated 54-symbol high-entropy recovery code (displayed in dash-separated groups). These credentials are known only to you; MerchantPulse does not store, transmit, or have access to your backup password or recovery code. If both are lost, your backup cannot be decrypted.</li>
+<li><strong>Restore &amp; dry-run:</strong> During a restore, the backup file is downloaded and decrypted locally. The app inspects the payload to present a non-destructive restore plan showing new vs. duplicate items before writing anything to local storage.</li>
+<li><strong>Backup retention:</strong> Backups are user-initiated. The current implementation does not automatically prune or delete older backups from Google Drive.</li>
+</ul>
 </section>
 <section>
 <h2>5. Sharing and service providers</h2>
@@ -58,6 +66,7 @@ footer{padding:20px;color:#667085}
 <h2>6. Retention and account deletion</h2>
 <p>You can request deletion of your MerchantPulse account using the in-app Delete Account feature or the external account deletion page.</p>
 <p>Account deletion removes the associated Firebase Authentication account and merchant profile document when the operation succeeds. Local transaction records, QR profile records and QR image files are intentionally retained on the device by the current implementation. They are not automatically deleted when the cloud account is deleted.</p>
+<p>Deleting your cloud account also does not automatically delete encrypted backup files already stored in your Google Drive Application Data folder. You can manage or delete hidden app data at any time through Google Drive on the web (Settings &rarr; Manage Apps &rarr; MerchantPulse &rarr; Options &rarr; Delete hidden app data).</p>
 <p>Review and manage locally stored records before sharing your device or removing the app. Local data may be lost when app data is cleared or the app is uninstalled.</p>
 </section>
 <section>
