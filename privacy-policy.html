@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="MerchantPulse privacy policy and data practices.">
-<title>Privacy Policy — MerchantPulse</title>
+<title>Privacy Policy — UPI MDR Analysis (MerchantPulse)</title>
 <style>
 body{font-family:Arial,sans-serif;line-height:1.7;color:#1d2939;background:#f3f6fb;margin:0}
 header{background:#101827;color:white;padding:28px 18px}
@@ -17,13 +17,14 @@ footer{padding:20px;color:#667085}
 </style>
 </head>
 <body>
-<header><div><h1>Privacy Policy</h1><small>MerchantPulse</small></div></header>
+<header><div><h1>Privacy Policy</h1>
+<p>App: <strong>UPI MDR Analysis</strong> (MerchantPulse) · Developer: <strong>RainyClouds</strong> · Package: <code>com.merchantpulse.poc</code></p></div></header>
 <main>
 <section>
 <h2>1. Introduction</h2>
-<p>MerchantPulse is a merchant utility app designed to help users review supported UPI payment notifications, maintain transaction records on their device, manage QR profiles and view estimated MDR information.</p>
-<p>This policy explains how the app handles information. Please review it before using the app.</p>
-<p><strong>Last updated:</strong> 13 October 2026</p>
+<p>This Privacy Policy explains how <strong>UPI MDR Analysis</strong> (internally known as <strong>MerchantPulse</strong>, package: <code>com.merchantpulse.poc</code>), developed by <strong>RainyClouds</strong>, handles information when you use our mobile utility application.</p>
+<p>The app is designed to help users review supported UPI payment notifications, maintain transaction records on their device, manage QR profiles, estimate merchant discount rate (MDR) costs, and optionally back up their data. Please review this policy before using the app.</p>
+<p><strong>Last updated:</strong> 14 October 2026</p>
 </section>
 <section>
 <h2>2. Information handled</h2>
@@ -59,16 +60,23 @@ footer{padding:20px;color:#667085}
 </section>
 <section>
 <h2>5. Sharing and service providers</h2>
-<p>Firebase services process information as necessary to provide authentication and cloud profile storage. Those services are subject to their provider's terms and privacy documentation.</p>
-<p>MerchantPulse does not intentionally sell your personal information. The app's actual data flows may change as features evolve; this policy should be updated before new data collection or sharing is introduced.</p>
+<p>We work with trusted third-party service providers to facilitate app functionality:</p>
+<ul>
+<li><strong>Firebase Services (Google LLC):</strong> We use Firebase Authentication to secure user sign-in and Cloud Firestore to store cloud merchant business profiles. Those services are subject to the Google Cloud / Firebase terms and privacy documentation.</li>
+<li><strong>Google AdMob &amp; UMP (Google LLC):</strong> The app integrates Google Mobile Ads (AdMob) to display advertisements. AdMob may process device identifiers, advertising IDs, and interaction data to serve ads. The app requests advertisements only after gathering user consent via Google's User Messaging Platform (UMP) and verifying that ad requests are permitted (<code>canRequestAds()</code>).</li>
+</ul>
+<p>RainyClouds does not sell, rent, or trade your personal or financial information to third parties.</p>
 </section>
 <section>
 <h2>6. Retention and account deletion</h2>
-<p>You can request deletion of your MerchantPulse account using the in-app Delete Account feature or the external account deletion page.</p>
-<p>When an in-app account deletion completes, the operation permanently deletes your associated Firebase Authentication account and your merchant business profile document in Cloud Firestore. In addition, all local SQLite transaction records, saved QR profile records, and account-owned QR image files associated with that account are permanently purged from your device. Older unassigned legacy records and records belonging to other accounts are protected and are not deleted.</p>
-<p>Account deletion is coordinated across multiple steps. If an external service or network interruption prevents immediate completion, the app uses a durable local recovery journal to retry and finish remaining cleanup safely upon the next launch.</p>
-<p>Deleting your account does NOT automatically delete encrypted backup files already stored in your personal Google Drive account. Those backups remain in your private Google Drive Application Data folder until you choose to delete them directly through Google Drive on the web (Settings &rarr; Manage Apps &rarr; MerchantPulse &rarr; Options &rarr; Delete hidden app data).</p>
-<p>Review and export any records you wish to keep before initiating account deletion. This operation cannot be undone.</p>
+<p>You can request deletion of your account at any time either directly within the app or externally via email:</p>
+<ul>
+<li><strong>In-app account deletion:</strong> Using the Delete Account feature in the app's Profile section initiates a multi-step deletion coordinator that permanently deletes your Firebase Authentication account and your Cloud Firestore merchant profile document. In addition, it permanently purges all local SQLite transaction records, saved QR profile records, and account-owned QR image files associated with that account from your device. Older unassigned legacy records and records belonging to other accounts are protected and are not deleted.</li>
+<li><strong>External email requests (without reinstalling):</strong> If you cannot access the app or have uninstalled it, you can submit an account deletion request by emailing <a href="mailto:yourtimes555@gmail.com">yourtimes555@gmail.com</a>. External requests require receipt, identity verification (to ensure the request originates from the legitimate account owner), and manual processing before cloud records are deleted.</li>
+</ul>
+<p><strong>Multi-step recovery:</strong> For in-app deletion, the operation is coordinated across distinct steps. If a network interruption or process termination occurs midway, a durable local recovery journal ensures remaining steps are retried and safely finished upon next app launch.</p>
+<p><strong>Google Drive backups:</strong> Deleting your account does NOT automatically delete encrypted backup files already stored in your personal Google Drive account. Those backups remain in your private Google Drive Application Data folder until you choose to delete them directly through Google Drive on the web (Settings &rarr; Manage Apps &rarr; MerchantPulse &rarr; Options &rarr; Delete hidden app data).</p>
+<p>Review and export any records you wish to keep before initiating account deletion. Once completed, this operation cannot be undone.</p>
 </section>
 <section>
 <h2>7. Security</h2>
@@ -89,6 +97,6 @@ footer{padding:20px;color:#667085}
 <p><a href="index.html">Back to MerchantPulse Legal</a> · <a href="delete-account.html">Account deletion information</a></p>
 </section>
 </main>
-<footer>MerchantPulse · Privacy Policy</footer>
+<footer>UPI MDR Analysis (MerchantPulse) · RainyClouds · Privacy Policy</footer>
 </body>
 </html>
